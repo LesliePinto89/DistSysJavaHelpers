@@ -8,7 +8,7 @@ public class WikiFileReader extends TraceFileReaderFoundation {
 
 	
 	/**
-	 * Constructs a "wiki" file reader that later on can act as a trace producer
+	 * Constructs a "gwf" file reader that later on can act as a trace producer
 	 * for user side schedulers.
 	 * 
 	 * @param fileName
@@ -80,6 +80,10 @@ public class WikiFileReader extends TraceFileReaderFoundation {
 			throws IllegalArgumentException, InstantiationException, IllegalAccessException, InvocationTargetException {
 		boolean askalon = jobstring.endsWith("ASKALON");
 		String[] elements = jobstring.trim().split("\\s+");
+		
+		if(elements[2].contains("error:unsupported-request-method")) {
+			return null;
+		}
 		long jobState = Long.parseLong(elements[0]);
 		int procs = 1;  //Hard coded value for test purposes
 		long runtime = 400;
