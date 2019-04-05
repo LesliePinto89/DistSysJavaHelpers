@@ -1,6 +1,7 @@
 package hu.mta.sztaki.lpds.cloud.simulator.helpers.trace.file;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.concurrent.ThreadLocalRandom;
 
 import hu.mta.sztaki.lpds.cloud.simulator.helpers.job.Job;
 
@@ -85,7 +86,7 @@ public class WikiFileReader extends TraceFileReaderFoundation {
 			return null;
 		}
 		long jobState = Long.parseLong(elements[0]);
-		int procs = 1;  //Hard coded value for test purposes
+		int procs = ThreadLocalRandom.current().nextInt(1,4);  //Hard coded value for test purposes
 		long runtime = 400;
 		long waitTime = 0;
 		String name = elements[2];
@@ -147,3 +148,4 @@ public class WikiFileReader extends TraceFileReaderFoundation {
 	}
 
 }
+
