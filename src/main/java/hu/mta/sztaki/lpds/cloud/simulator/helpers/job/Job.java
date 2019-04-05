@@ -62,6 +62,10 @@ public abstract class Job {
 	 * original infrastructure.
 	 */
 	private long queuetimeSecs;
+	public void setSubmittimeSecs(long submittimeSecs) {
+		this.submittimeSecs = submittimeSecs;
+	}
+
 	/**
 	 * The time instance the job has got started on its original infrastructure.
 	 */
