@@ -79,13 +79,16 @@ public class FileBasedTraceProducerFactory {
 		GenericTraceProducer producer = null;
 		if (fileName.endsWith(".gwf")) {
 			producer = new GWFReader(fileName, from, to, furtherjobs, jobType);
-		} else if (fileName.endsWith(".swf")) {
-			producer = new SWFReader(fileName, from, to, furtherjobs, jobType);
 		} 
 		
 		else if (fileName.endsWith("\\currenttmp")) {
 			producer = new WikiFileReader(fileName, from, to, furtherjobs, jobType);
 		} 
+		
+		else if (fileName.endsWith(".swf")) {
+			producer = new SWFReader(fileName, from, to, furtherjobs, jobType);
+		} 
+		
 		else if (fileName.endsWith(".srtg")) {
 			SimpleRandomTraceGenerator srtg = SimpleRandomTraceGenerator.getInstanceFromFile(jobType, fileName);
 			srtg.setMaxTotalProcs(maxProcs);
